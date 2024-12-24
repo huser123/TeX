@@ -1,0 +1,136 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[magyar]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{pdflscape}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\pagenumbering{gobble} 
+
+\begin{document}
+
+\begin{center}
+{\Huge \textbf{FELADAT}}
+\end{center}
+
+\vspace{0.5cm}
+
+\input{00_LEIRAS.txt}
+
+\newpage
+\begin{landscape}
+\begin{center}
+\begin{tikzpicture}[scale=1.4]
+
+\draw [help lines, black!20] (-1,-1) grid (15,11);
+
+\coordinate (A) at (1,1);
+\coordinate (B) at (10,0);
+\coordinate (C) at (14,2);
+\coordinate (D) at (10,1);
+\coordinate (E) at (8,1);
+\coordinate (F) at (4,2);
+\coordinate (G) at (9,3);
+\coordinate (H) at (10,2);
+\coordinate (I) at (12,3);
+\coordinate (J) at (6,4);
+\coordinate (K) at (10,10);
+\coordinate (L) at (1,9);
+\coordinate (M) at (6,8);
+\coordinate (N) at (5,4);
+\coordinate (O) at (11,7);
+
+\draw [fill=black!20, dashed, ultra thick] (O) circle (3);
+
+\draw [fill=magenta!80, dotted, thick]
+(A)
+--(B)
+--(C)
+--(D)
+--(E)
+--(F)
+--(G)
+--(H)
+--(I)
+--(J)
+--(K)
+--(L)
+--(M)
+--(N)
+--(A);
+
+
+
+\node [left] at (1,1) {A};
+\node [below] at (10,0) {B};
+\node [right] at (14,2) {C};
+\node [above] at (10,1) {D};
+\node [above] at (8,1) {E};
+\node [left] at (4,2) {F};
+\node [below] at (9,3) {G};
+\node [below] at (10,2) {H};
+\node [right] at (12,3) {I};
+\node [left] at (6,4) {J};
+\node [above] at (10,10) {K};
+\node [left] at (1,9) {L};
+\node [above] at (6,8) {M};
+\node [left] at (5,4) {N};
+\node [left] at (11,7) {O};
+
+\coordinate (P) at (2,8);
+\coordinate (Q) at (1,6);
+\coordinate (R) at (2,4);
+\coordinate (S) at (4,7);
+
+
+\draw [fill=green!40]
+(P)
+--(Q)
+--(R)
+--(S)
+--(P);
+
+
+\node [above] at (2,8) {P};
+\node [left] at (1,6) {Q};
+\node [below] at (2,4) {R};
+\node [right] at (4,7) {S};
+
+
+\end{tikzpicture}
+\end{center}
+\end{landscape}
+
+
+\newpage
+\begin{tikzpicture}[scale=2,xscale=1.2]
+\draw [help lines, black!10] (-1,-1) grid (6,11);
+
+\path (0,0) coordinate(A) [below] node {A};
+\path (0,10) coordinate(B) [above] node {B};
+\path (2,10) coordinate(C) [above] node {C};
+\path (0,6) coordinate(D) [left] node {D};
+\path (2,6) coordinate(E) [above] node {E};
+\path (2,0) coordinate(F) [below] node {F};
+\path (1,9) coordinate(G) [left] node {G};
+\path (1,7) coordinate(H) [below] node {H};
+\path (1,5) coordinate(I) [above] node {I};
+\path (1,1) coordinate(J) [left] node {J};
+\path (2,5) coordinate(K) [above] node {K};
+\path (2,1) coordinate(L) [below] node {L};
+\path (2,9) coordinate(M) [above] node {M};
+\path (2,7) coordinate(N) [below] node {N};
+
+\draw (F)--(A)--(B)--(C);
+\draw (D)--(E);
+\draw (L)--(J)--(I)--(K);
+\draw (N)--(H)--(G)--(M);
+
+\draw (C) arc (90:-90:2);
+\draw (M) arc (90:-90:1);
+
+\draw (K) arc (90:-90:2);
+\draw (E) arc (90:-90:3);
+\end{tikzpicture}
+
+\end{document}

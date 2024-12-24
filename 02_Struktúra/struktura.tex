@@ -1,0 +1,218 @@
+\documentclass[11pt]{beamer}
+ \usetheme{Szeged}
+ \usepackage[utf8]{inputenc}
+ \usepackage[magyar]{babel}
+ \usepackage[T1]{fontenc}
+%\usepackage{booktabs} 
+
+ \author{Tipográfiai rendszerek - \TeX}
+ \title{Formázás és struktúrák}
+ \date{2021.02.24.} 
+
+
+\newcommand{\tbs}{\textbackslash} 
+
+ 
+ \begin{document}
+ 
+ \begin{frame}
+ \titlepage
+ \end{frame}
+ 
+\begin{frame}{Ami kell:}
+
+\textbf{\tbs documentclass}[10pt,a4paper]\{book\} \\
+\textbf{\tbs usepackage}[utf8]\{inputenc\} \\
+\textbf{\tbs usepackage}[magyar]\{babel\} \\
+\textbf{\tbs usepackage}[T1]\{fontenc\} \\
+\textbf{\tbs author}\{Vezetéknév Keresztnév\} \\
+\textbf{\tbs title}\{Formázás és struktúra\}
+
+\vspace{1cm}
+
+\textbf{\tbs begin}\{document\} \\
+\hspace{1cm} tartalom \\
+\textbf{\tbs end}\{document\}
+
+\end{frame}
+ 
+ 
+\begin{frame}{Új sor}
+\begin{itemize}
+ 
+\item \tbs newline - új sor, \textbf{de nem új bekezdés} 
+\item \tbs \tbs \ - új sor, \textbf{de nem új bekezdés}
+\item \tbs vspace\{...cm\} - adott egységnyi szabad függőleges helykihagyása
+\item \tbs hspace\{...cm\} - adott egységnyi szabad vízszintes helykihagyása
+\item De használhatjuk így is: \tbs \tbs [\dots pt] \% vagy más mértékegység
+\end{itemize} 
+\end{frame}
+
+\begin{frame}{Szövegformázás}
+\begin{itemize}
+\item	\tbs textbf\{•\} - \textbf{félkövér}
+\item 	\tbs textit\{•\} - \textit{dőlt}
+\item   \tbs emph\{•\} - \emph{kiemelt} - csomagonként változhat az stílusa!
+\item 	\tbs texttt\{•\} - \texttt{írógép}
+\item   \tbs underline\{•\} - \underline{aláhúzott}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile=singleslide]{Idézőjelek}
+\begin{itemize}
+
+\item	A magyarban az idézőjeleket alul kezdjük és felül zárjuk
+\item 	szemben az angollal, ami csak felül jelöli "-el
+\item	A magyar idézőjelet  \verb+,,+ -el kezdjük és \verb+''+ -el zárjuk:
+		\begin{itemize}
+		\item ,,Az ég kék''
+		\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile=singleslide]{Kötőjelek és a három pont}
+\begin{itemize}
+\item	- (\verb+-+) - kiskötőjel 
+\item	-- (\verb+--+) - gondolatjel
+\item 	--- (\verb+---+) - kvirtmínusz
+\item	\tbs dots - \dots
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Elválasztás}
+\begin{itemize}
+\item	A \TeX \ a babel csomag alapján ismeri a nyelv szabályait, így az elválasztást is.
+\item	De,előfordulhatnak speciális esetek, vagy más, amikor nekünk kell jelezni, hogy egy szó, hol választható el.
+\item	Ekkor a szóba illesztett \tbs - -el tudjuk jelezni a \TeX \ számára az elválasztási helyet
+\item	Például:
+		\begin{itemize}
+		\item megszentségteleníthetetlenségeskedéseitekért
+		\item meg\tbs -szent\tbs -ség\tbs -te\tbs -le\tbs -nít\tbs -he\tbs -tet\tbs -len\tbs -sé\tbs -ges\tbs -ke\tbs -dé\tbs -se\tbs -i\tbs -te\tbs -kért
+		\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Új oldal és oldalszámozás}
+\begin{itemize}
+\item \tbs newpage
+\item \tbs pagenumbering\{\}
+	\begin{itemize}
+	\item arabic
+	\item roman
+	\item Roman
+	\item alph
+	\item Alph
+	\end{itemize}
+\item \tbs pagestyle\{empty\} \% A preambulumba kell írni - ekkor egyik oldal sem lesz számozva
+\item \tbs thispagestyle\{empty\} \% Az adott laphoz, amelyiken nem szeretnénk az oldalszámot
+\item \tbs setcounter\{page\}\{szam\} \% Átállítja az oldalszámozást
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Szakaszolás}
+\begin{itemize}
+\item	\tbs part\{cím\} - rész (csak book!)
+\item	\tbs chapter\{cím\} - fejezet (csak book!)
+\item	\tbs section\{cím\} - szakasz / fejezet
+\item   \tbs subsection\{cím\} - alszakasz / alfejezet
+\item	\tbs subsubsection\{cím\} - alalszakasz / alalfejezet
+		\begin{itemize}
+		\item	nincs számozva
+		\item	a tartalomjegyzékben sem jelenik meg
+		\end{itemize}
+\item	\tbs appendix\{cím\} - függelékek - betűvel jelenik meg szám helyett
+\end{itemize}
+\end{frame}
+ 
+\begin{frame}{Számozatlan szakaszolás}
+\begin{itemize}
+\item A csillaggal jelölt tagolók nem számozódnak és a tartalomjegyzékben sem jelennek meg
+\end{itemize}
+
+\vspace{1cm}
+
+\begin{itemize}
+\item	\tbs part*\{cím\}
+\item	\tbs chapter*\{cím\}
+\item	\tbs section*\{cím\}
+\item   \tbs subsection*\{cím\}
+\item	\tbs subsubsection*\{cím\}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Tartalomjegyzék}
+\begin{itemize}
+\item	\tbs tableofcontents
+\item	Többször kell fordítani a frissítéséhez
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Margók}
+\begin{itemize}
+\item A margókat a \textbf{geometry} csomaggal szabályozhatjuk
+\item \tbs usepackage[left=\dots cm,right=\dots cm,top=\dots cm,
+bottom=\dots cm]\{geometry\}
+\end{itemize}
+\end{frame}
+
+% Dokumentáció a fancyhdr doksiban: https://mirror.szerverem.hu/ctan/macros/latex/contrib/fancyhdr/fancyhdr.pdf
+
+\begin{frame}{Fejléc és lábléc}
+\begin{itemize}
+\item Ehhez új csomagra lesz szükségünk
+\item \tbs usepackage\{fancyhdr\}
+\item alkalmazni kell a csomagot: \tbs pagestyle\{fancy\}
+\item a preambulumba írjuk be:
+	\begin{itemize}
+	\item \tbs pagestyle\{fancy\}
+	\item \tbs fancyhf\{\} \% törli az addigi fej- és lábléc elemeket
+	\item \tbs lhead\{baloldali fejléc mező\}
+	\item \tbs chead\{középső fejléc mező\}
+	\item \tbs rhead\{jobboldali  fejléc mező\}
+	\item 
+	\item \tbs lfoot\{baloldali lábléc mező\}
+	\item \tbs cfoot\{középső lábléc mező\} \% pl. \tbs thepage - oldalszám
+	\item \tbs rfoot\{jobboldali  lábléc mező\}
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fejléc és lábléc}
+\begin{itemize}
+\item Az elválasztó vonalak vastagságát az alábbiakkal adjuk meg:
+	\begin{itemize}
+	\item \tbs renewcommand\{\tbs headrulewidth\}\{\dots pt\}
+	\item \tbs renewcommand\{\tbs footrulewidth\}\{\dots pt\}
+	\end{itemize}
+\item Egyéb elemek:
+	\begin{itemize}
+	\item \tbs thepage \% Az adott oldal oldalszáma
+	\item \tbs thechapter \% Az fejezet \textbf{számát} adja vissza
+	\item \tbs thesection \% Az adott ,,section'' \textbf{számát} adja vissza
+	\item \tbs chaptername\% kiírja, hogy fejezet
+	\item \tbs leftmark \% Kiírja a legmagasabb struktúra számát és nevét - pl. FEJEZET 1. A FEJEZET CÍME
+	\item \tbs rightmark \% Kiírja a második legmagasabb struktúra számát és nevét - pl. 1.1 EZ A SECTION CÍME
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+
+% Lásd: https://www.overleaf.com/learn/latex/headers_and_footers
+
+\begin{frame}{Fejléc és lábléc}
+\begin{itemize}
+\item Természetesen, ezeket is lehet még tovább finomítani (nem minden class esetén működik!)
+\item \tbs fancyhead$[$LE,RO$]$\{szöveg\}
+	\begin{itemize}
+	\item E - páros oldal (even page)
+	\item O - páratlan (odd page)
+	\item L - baloldal (left side)
+	\item C - középen (centered)
+	\item R - jobboldal (right side)
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\end{document} 

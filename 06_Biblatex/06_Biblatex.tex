@@ -1,0 +1,160 @@
+\documentclass[11pt]{beamer}
+\usetheme{Szeged}
+\usepackage[utf8]{inputenc}
+\usepackage[magyar]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+
+\usepackage{biblatex}
+
+\author{Tipográfiai rendszerek - \TeX
+}
+\title{Bib(la)tex, saját dokumentum osztályok}
+
+\date{2021.03.31.} 
+
+\newcommand{\tbs}{\textbackslash}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+%\begin{frame}
+%\tableofcontents
+%\end{frame}
+
+\begin{frame}{Bibliográfiai hivatkozások}
+\begin{itemize}
+\item A \TeX{}-ben lehetőségünk van az irodalmi hivatkozásokat rendszerezni
+\item Ennek egyik megoldása a Biblatex
+\item Ehhez előbb létre kell hozni egy .bib kiterjesztésű adatbázist
+\item Ebbe gyűjteni az irodalmakat
+\item Ehhez szükség van a \textbf{biblatex} csomagra
+\item A .bib fájlt pedig a \textbf{\tbs addbibresource\{bibfajl\}}-al hivatkozzuk le
+	\begin{itemize}
+	\item és a Biber fordítóra, ami egy külön szoftver
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{.bib fájl}
+\begin{itemize}
+\item A bib fájl tartalmazza az irodalom minden elemét
+	\begin{itemize}
+	\item címke - amivel hivatkozunk rá
+	\item A mű címe
+	\item A mű szerzője
+	\item A mű szerzői
+	\item Kiadó
+	\item év
+	\item \dots
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Példa}
+\begin{verbatim}
+@article{einstein,
+    author = "Albert Einstein",
+    title = "{Zur Elektrodynamik bewegter K{\"o}rper}.
+     ({German})
+    [{On} the electrodynamics of moving bodies]",
+    journal = "Annalen der Physik",
+    volume = "322",
+    number = "10",
+    pages = "891--921",
+    year = "1905",
+    DOI = "http://dx.doi.org/10.1002/andp.19053221004",
+    keywords = "physics"
+}
+\end{verbatim}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+\item Ezekre hivatkozni a \textbf{\tbs cite\{cimke\}} paranccsaltudunk
+\item Természetesen, a parancs újra kalibrálásával egyedi formát is adhatunk neki
+\item a végén pedig a \textbf{\tbs printbibliography} paranccsal listázhatjuk ki a hivatkozott irodalmakat.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{itemize}
+\item A TeXMakerben érdemes átállítani a Bib(la)tex fordítót biberre
+	\begin{itemize}
+	\item biber \%
+	\end{itemize}
+\item Esetleg saját parancsot létrehozni
+	\begin{itemize}
+	\item \begin{verbatim}
+	pdflatex -synctex=1 -interaction=nonstopmode %.tex|
+	biber % | pdflatex %|pdflatex -synctex=1 
+	-interaction=nonstopmode %.tex|pdflatex -synctex=1 
+	-interaction=nonstopmode %.tex|xdg-open %.pdf
+	\end{verbatim}
+	\end{itemize}
+\item \textbf{Csak olyan, aki tudja, hogy mit csinál!}
+	\begin{itemize}
+	\item A fentebbi parancsok Linux alatt futnak biztosan
+	\item A Windows verziók eltérhetnek
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\includegraphics[scale=0.5]{kep} 
+\end{frame}
+
+\begin{frame}{Saját dokumentum osztály}
+\begin{itemize}
+\item A TeX-ben lehetőségünk van létrehozni saját dokumentum osztályokat is
+\item Ehhez egy .cls fájlt kell létrehoznunk
+\end{itemize}
+\end{frame}
+
+\begin{frame}{A cls fájl felépítése - \textbf{nem} teljes}
+\begin{itemize}
+	\item \tbs NeedsTeXFormat\{LaTeX2e\} \% Használni kívánt formátum
+	\item \tbs ProvidesClass\{exampleclass\}[2014/08/16 Example LaTeX class] \% Az osztály neve
+	\item 
+	\item \tbs LoadClass\{osztaly\} \% Az osztály, amire épül
+	\item \tbs RequirePackage\{csomag\_neve\} \% A megkövetelt csomagok - ezeket  külön már nem kell betölteni
+	\item \tbs newcommand\{\tbs uj\_parancs\}\{\tbs regi\_parancs\} \% Új parancsok definiálása
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Minta}
+
+\tbs NeedsTeXFormat\{LaTeX2e\} \\
+\tbs ProvidesClass\{sajat\}[2021/03/31 Bemutato osztaly] \\
+\ \\
+\tbs LoadClass[10pt,a4paper]\{article\} \\
+\tbs RequirePackage[utf8]\{inputenc\} \\
+\tbs RequirePackage[magyar]\{babel\} \\
+\tbs RequirePackage[T1]\{fontenc\} \\
+\tbs RequirePackage\{graphicx\} \\
+\tbs RequirePackage[backend=biber]\{biblatex\} \\
+\tbs RequirePackage\{color\} \\
+\tbs RequirePackage[left=2cm,right=2cm,top=2cm,bottom=2cm]\{geometry\} \\
+\tbs RequirePackage\{xcolor\} \\
+\tbs RequirePackage\{amsmath\} \\
+\tbs RequirePackage\{amsfonts\} \\
+\end{frame}
+
+\begin{frame}
+\tbs RequirePackage\{amssymb\} \\
+\tbs RequirePackage\{sectsty\} \\
+\ \\
+\tbs definecolor\{foszin\}\{RGB\}\{100,255,140\} \\
+\ \\
+\tbs sectionfont\{\tbs color\{foszin\}\} \\
+\ \\
+\tbs newcommand\{\tbs tbs\}\{\tbs textbackslash\} \\
+\tbs newcommand\{\tbs fejezet\}\{\tbs section\} \\
+\ \\
+\tbs def\tbs C\{\tbs mathbb\{C\}\}
+\end{frame}
+
+\end{document}

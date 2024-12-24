@@ -1,0 +1,333 @@
+\documentclass[11pt]{beamer}
+\usetheme{Szeged}
+\usepackage[utf8]{inputenc}
+\usepackage[magyar]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{tcolorbox}
+\usepackage{multicol}
+
+\author{Tipográfiai rendszerek - \TeX}
+\title{Matematikai mód}
+\date{2021.03.10.}
+
+\newcommand{\tbs}{\textbackslash}
+ 
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Mi is az a matematikai mód?}
+\begin{itemize}
+\item 	Ehhez szükségünk van az ams csomagokra!
+\item	A \TeX{} (és így a \LaTeX{}) fő erőssége a matematikai szövegek szedése
+\item	A matematikai szövegek szedéséhez ún. ,,matematikai módot'' használunk
+\item	A szövegközi matematikai mód két \textbf{\$ képlet \$} közé íródik.
+\item 	A kiemelt matematikai mód vagy \textbf{\$\$ képlet \$\$} közé, vagy pedig \textbf{\tbs $\left[ \right.$ képlet \tbs $\left. \right]$} közé.
+\item 	A sortöréseknek és a szóközöknek nincs értelme, ezeket parancsokkal kell meghatározni
+	\begin{itemize}
+	\item pl. \textbf{\tbs quad}
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Matematikai mód - példák}
+
+Ez a képlet $c^2=a^2+b^2$ a szövegben fog elhelyezkedni. \\
+
+De kiemelt matematikai módban $$c^2=a^2+b^2$$ már nem.
+
+\vspace{1cm}
+
+\begin{verbatim}
+Ez a képlet $c^2=a^2+b^2$ a szövegben fog elhelyezkedni. \\
+
+De kiemelt matematikai módban $$c^2=a^2+b^2$$ már nem.
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Váltás módok közt}
+\begin{itemize}
+\item Gyakran szükség lehet, hogy matematikai módból visszaváltsunk szöveges módba
+\item Például szövegek beírásakor
+\item Mert a \TeX{} a matematikai módban írt betűket ismeretleneknek / változóknak veszi.
+\item Erre szolgál a matematikai módban használható \textbf{\tbs textrm\{szöveg\}} parancs.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Használat}
+\begin{itemize}
+\item Felső index: $\hat{}$ pl: a \verb+a^2+ ($a^2$)
+\item Alsó index: \_ pl. \verb+a_2+ ($a_2$)
+\item Az alsó és a felső index egyszerre csak egy karakterre vonatkozik!
+\item azaz a \verb|a^2365|-ból $a^2365$ lesz, a \verb|a_2365|-ból $a_2365$
+\item ilyenkor csoportosítani kell a \{\} közé:
+	\begin{itemize}
+	\item \verb|a^{2365}| $\rightarrow$ $a^{2365}$
+	\item \verb|a_{2365}| $\rightarrow$ $a_{2365}$
+	\end{itemize}
+\item kiemelendő még az alábbi sajátosság is:
+\item \verb|a^2_3| az $a^2_3$ de a \verb|a_3^2| is $a_3^2$
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{A hatvány hatványa, az index indexe, ...}
+\begin{itemize}
+\item Ilyenkor \{\} közt kell megadni az adatokat
+\item $a^{b^c}$ esetén \verb|a^{b^c}|
+\item $a_{b_c}$ esetén \verb|a_{b_c}|
+\item $a^{b_c}$ esetén \verb|a^{b_c}|
+\item $a_{b^c}$ esetén \verb|a_{b^c}|
+\item $a^{b+c}$ esetén \verb|a^{b+c}|
+\item $a_{b+c}$ esetén \verb|a_{b+c}|
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Gyök}
+\begin{itemize}
+\item Gyökvonást a \textbf{\tbs sqrt\{szám\}} paranccsal készítünk.
+\item A gyökjel nagyságát a \TeX{} határozza meg.
+\item Pl. $\sqrt{5646546546454}$ azaz \verb|\sqrt{5646546546454}|
+\item x-edik gyökre a \verb|\sqrt[•]{•}| parancs használható.
+\item Pl. $\sqrt[3]{46456466}$ azaz \verb|\sqrt[3]{46456466}|
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Törtek}
+\begin{itemize}
+\item A törtek készítésére a \textbf{\tbs frac\{•\}\{•\}} parancs való.
+\item Pl. $\frac{54645}{21315}$ azaz \verb|\frac{54645}{21315}|
+\item A törtek egymásba ágyazhatóak, azaz emeletes törteket hozhatunk létre.
+\item $$\frac{\frac{a}{b}}{\frac{c}{d}}$$ azaz \verb|\frac{\frac{a}{b}}{\frac{c}{d}}|
+\item De, szabadon kombinálható mással is: $$\frac{\sqrt[a^2]{2}}{\sqrt[b_i]{3}}$$ azaz \verb|\frac{\sqrt[a^2]{2}}{\sqrt[b_i]{3}}|
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Matematikai szimbólumok}
+\begin{itemize}
+\item A halmazokat dupla szárú betűvel jelöljük.
+\item ezeket a \textbf{\tbs mathbb\{•\}} paranccsal tudjuk kiíratni.
+\item például:
+	\begin{itemize}
+	\item a természetes számok halmaza $\mathbb{N}$
+	\item az egész számok halmaza $\mathbb{Z}$
+	\item a racionális számok halmaza $\mathbb{Q}$
+	\item a valós számok halmaza $\mathbb{R}$
+	\item a komplex számok halmaz $\mathbb{C}$
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Matematikai szimbólumok}
+\begin{itemize}
+\item A \TeX{} a görög betűket is képes kiírni.
+\item \tbs pi $\pi$
+\item \tbs Pi $\Pi$
+\item \tbs alpha $\alpha$
+\item \tbs beta $\beta$
+\item \dots
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Matematikai szimbólumok}
+\begin{itemize}
+\item Ezen kívül a \TeX{} számtalan az alap és a magasabb szintű matematikához szükséges szimbólum kezelésére is képes. Ezek megtekinthetőek a különböző útmutatókban, illetve az editor különböző menüpontjaiban.
+\item Példák:
+	\begin{itemize}
+	\item	\verb|\lim_{n \to \infty}\frac{1}{n}|
+	\item 	\verb|T = \int^b_a f(x) \ dx|
+	\item 	\verb|a \in \mathbb{R}^+|
+	\end{itemize}
+\end{itemize}
+
+$$\lim_{n \to \infty}\frac{1}{n}$$
+
+$$T = \int^b_a f(x) \ dx$$
+
+$$a \in \mathbb{R}^+$$
+
+\end{frame}
+
+\begin{frame}[fragile]{Számozott egyenletek}
+\begin{itemize}
+\item A számozott egyenleteket a\\ \textbf{\tbs begin\{equation\}} és \textbf{\tbs end\{equation\}} közé írjuk
+\end{itemize}
+
+\begin{equation}
+c^2=a^2+b^2
+\end{equation}
+
+\begin{equation}
+a=\sqrt{c^2-b^2}
+\end{equation}
+
+\begin{verbatim}
+\begin{equation}
+c^2=a^2+b^2
+\end{equation}
+
+\begin{equation}
+a=\sqrt{c^2-b^2}
+\end{equation}
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{,,Egyenlettömb''}
+\begin{itemize}
+\item Egyenlettömböt az \textbf{eqnarray} környezetben hozhatunk létre
+\item Minden új sora egy új számozott képlet / egyenlet
+\end{itemize}
+\begin{eqnarray}
+a+b=c \\
+x+y=z \\
+c^2=a^2+b^2
+\end{eqnarray}
+\begin{verbatim}
+\begin{eqnarray}
+a+b=c \\
+x+y=z \\
+c^2=a^2+b^2
+\end{eqnarray}
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Rendezett egyenletek}
+\begin{itemize}
+\item Az egyenleteket rendezhetjük egymás alá, mondjuk egyenlőségjellel
+\item itt az \textbf{align} környezetet használjuk ehhez
+\item A rendezési pontot az \textbf{\&} jellel adjuk meg.
+\end{itemize}
+
+\begin{align}
+aa+ab&=cc \\
+x+y&=z+n \\
+c^2&=a^2+b^2
+\end{align}
+
+\begin{verbatim}
+\begin{align}
+aa+ab&=cc \\
+x+y&=z+n \\
+c^2&=a^2+b^2
+\end{align}
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Hivatkozások}
+\begin{itemize}
+\item Természetesen, ezekre hivatkozni is tudunk
+\item Hivatkozáshoz ugyanúgy a \textbf{\tbs label\{címke-neve\}} parancsot használjuk
+\item A hivatkozás helyén pedig a \textbf{\tbs ref\{cimke-neve\}} parancsot
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Számozatlan környezetek}
+\begin{itemize}
+\item Természetesen, ezeknek a környezeteknek is vannak számozatlan változataik
+\item Ebben az esetben a begint és a \{ közé csillagot kell rakni
+\item Például:
+	\begin{itemize}
+	\item \tbs begin*\{equation\}
+	\item \tbs begin*\{eqnarray\}
+	\item \tbs begin*\{array\}\{•\}
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Zárójelek}
+\begin{itemize}
+\item A \TeX{} képes a zárójelek nagyságát automatikusan igazítani.
+\item Ehhez a zárójeleket parancsokkal kell megadni:
+	\begin{itemize}
+	\item \tbs left(\dots\tbs right) $\rightarrow$ $\left(\dots\right)$
+	\item \tbs left[ \dots \tbs right] $\rightarrow$ $\left[\dots\right]$
+	\item \tbs left\tbs lbrace \dots \tbs right\tbs rbrace $\rightarrow$ $\left\lbrace\dots\right\rbrace$
+	\item \tbs left\tbs langle\dots\tbs right\tbs rangle $\rightarrow$ $\left\langle\dots\right\rangle$
+	\item \tbs left|\dots\tbs right| $\rightarrow$  $\left|\dots\right|$
+	\end{itemize}
+\item A zárójeleknek mindig kell nyitó és záró tag.
+\item Amennyiben valamelyik tagra nincs szükségünk, úgy azt a "csendesnek" kell jelölnünk $\rightarrow$ \tbs left. vagy \tbs right.
+	\begin{itemize}
+	\item tehát a left, vagy a right után egy pontot teszünk.
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Zárójel igazítás a gyakorlatban}
+\begin{Huge}
+$$ \left[\sqrt[\frac{a^{3_k}}{k_{p^c}}]{\frac{\sqrt[a^c]{\frac{\sqrt[c_j]{p^{d^c}}}{a_{k+c^p}}}}{m_{pl}+c_l}}+\left(\frac{\frac{\sqrt[q^4]{m_l}}{a^{p+c_k}+c_d}}{\frac{\sqrt[x_p]{a^{p+c}}}{k_{l_m}+p^{q^r}}}\right)\right]$$
+\end{Huge}
+\end{frame}
+
+\begin{frame}[fragile]
+$$S_n=\underbrace{a_1+a_2+\cdots+a_n}_{n \textrm{ db}}=\sum_{i=1}^n a_i$$
+\vspace{1cm}
+\begin{verbatim}
+$$S_n=\underbrace{a_1+a_2+\cdots+a_n}_{n \textrm{ db}}=
+\sum_{i=1}^n a_i$$
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Tömb}
+\begin{itemize}
+\item Ez az \textbf{array} környezet
+\item szintaxisa megegyezik a táblázatokéval
+\item mátrixok létrehozására (is) használható
+\end{itemize}
+
+\begin{multicols}{2}
+$$A=\left( \begin{array}{ccc}
+1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9
+\end{array}   \right)$$
+
+$$\det A=\left\vert \begin{array}{ccc}
+1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9
+\end{array}   \right\vert$$
+\end{multicols}
+
+\begin{verbatim}
+$$A=\left( \begin{array}{ccc}
+1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9
+\end{array}   \right)$$
+$$\det A=\left\vert \begin{array}{ccc}
+1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9
+\end{array}   \right\vert$$
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{m,n elemű tömb}
+
+$$A_{m,n} = \left(
+\begin{array}{cccc}
+a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\
+a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\
+\vdots  & \vdots  & \ddots & \vdots  \\
+a_{m,1} & a_{m,2} & \cdots & a_{m,n} 
+\end{array} \right)$$
+
+\begin{verbatim}
+$$A_{m,n} = \left(
+\begin{array}{cccc}
+a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\
+a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\
+\vdots  & \vdots  & \ddots & \vdots  \\
+a_{m,1} & a_{m,2} & \cdots & a_{m,n} 
+\end{array} \right)$$
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Továbbiak}
+\begin{itemize}
+\item Az itt bemutatott matematikai képességek a teljesség igénye nélkül készültek
+\item A cél a mindennapokban többször használt dolgok és az azokhoz használt logika bemutatása volt
+\item A \TeX{} ezen kívül számtalan matematikához kapcsolható szerkesztésre képes
+\item Szinte mindenre létezik csomag és hozzá leírás
+\end{itemize}
+\end{frame}
+
+\end{document}

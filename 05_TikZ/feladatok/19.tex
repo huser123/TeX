@@ -1,0 +1,102 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[magyar]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{pdflscape}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\pagenumbering{gobble} 
+
+\begin{document}
+
+\begin{center}
+{\Huge \textbf{FELADAT}}
+\end{center}
+
+\vspace{0.5cm}
+
+\input{00_leiras.txt}
+
+\newpage
+\begin{landscape}
+\begin{center}
+\begin{tikzpicture} [scale=2.1]
+\draw [help lines, black!20] (-1,-1) grid (7,7);
+\coordinate (A) at (1,1);
+\coordinate (B) at (0,1);
+\coordinate (C) at (0,2);
+\coordinate (D) at (2,2);
+\coordinate (E) at (2,3);
+\coordinate (F) at (1,3);
+\coordinate (G) at (1,4);
+\coordinate (H) at (3,4);
+\coordinate (I) at (3,3);
+\coordinate (J) at (4,3);
+\coordinate (K) at (4,4);
+\coordinate (L) at (5,4);
+\coordinate (M) at (5,5);
+\coordinate (N) at (0,4);
+\coordinate (O) at (1,5);
+\coordinate (P) at (0,6);
+\coordinate (Q) at (6,6);
+\coordinate (R) at (5,3);
+\coordinate (S) at (2,0);
+
+
+\draw [fill=green!50]
+(A)--(B)--(C)--(D)--(E)--(F)--(G)--(H)--(I)--(J)--(K)--(L)--(M)--(N)--(O)--(P)--(Q)--(R)--(S)--(A);
+\node [above] at (A) {A};
+\node [left] at (B) {B};
+\node [left] at (C) {C};
+\node [right] at (D) {D};
+\node [right] at (E) {E};
+\node [left] at (F) {F};
+\node [left,above] at (G) {G};
+\node [right] at (H) {H};
+\node [below] at (I) {I};
+\node [right] at (J) {J};
+\node [left] at (K) {K};
+\node [below] at (L) {L};
+\node [above] at (M) {M};
+\node [below] at (N) {N};
+\node [right] at (O) {O};
+\node [left] at (P) {P};
+\node [right] at (Q) {Q};
+\node [right] at (R) {R};
+\node [below] at (S) {S};
+\end{tikzpicture}
+\end{center}
+\end{landscape}
+
+\newpage
+\begin{tikzpicture}[scale=2,xscale=1.2]
+\draw [help lines, black!10] (-1,-1) grid (6,11);
+
+\path (0,0) coordinate(A) [below] node {A};
+\path (0,10) coordinate(B) [above] node {B};
+\path (2,10) coordinate(C) [above] node {C};
+\path (0,6) coordinate(D) [left] node {D};
+\path (2,6) coordinate(E) [above] node {E};
+\path (2,0) coordinate(F) [below] node {F};
+\path (1,9) coordinate(G) [left] node {G};
+\path (1,7) coordinate(H) [below] node {H};
+\path (1,5) coordinate(I) [above] node {I};
+\path (1,1) coordinate(J) [left] node {J};
+\path (2,5) coordinate(K) [above] node {K};
+\path (2,1) coordinate(L) [below] node {L};
+\path (2,9) coordinate(M) [above] node {M};
+\path (2,7) coordinate(N) [below] node {N};
+
+\draw (F)--(A)--(B)--(C);
+\draw (D)--(E);
+\draw (L)--(J)--(I)--(K);
+\draw (N)--(H)--(G)--(M);
+
+\draw (C) arc (90:-90:2);
+\draw (M) arc (90:-90:1);
+
+\draw (K) arc (90:-90:2);
+\draw (E) arc (90:-90:3);
+\end{tikzpicture}
+
+\end{document}

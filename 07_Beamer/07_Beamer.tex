@@ -1,0 +1,166 @@
+\documentclass[11pt]{beamer}
+\usetheme{Szeged}
+\usepackage[utf8]{inputenc}
+\usepackage[magyar]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{hyperref}
+
+\author{Tipográfiai rendszerek - \TeX}
+\title{Beamer}
+
+\date{2021.04.14.} 
+
+\newcommand{\tbs}{\textbackslash}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Mi az a beamer?}
+\begin{itemize}
+\item Ehhez a \textbf{beamer} dokumentumosztályt kell használnunk
+	\begin{itemize}
+	\item \tbs documentclass\{beamer\}
+	\end{itemize}
+\item A beamer a \TeX{} \tbs \  \LaTeX{} \tbs \  ...\TeX{} prezentációkészítője
+\item Előnye a ,,hagyományos'' prezentációkészítőkkel szemben ugyanaz, mint a többi dokumentumosztály esetén
+	\begin{itemize}
+	\item platformfüggetlen
+	\item garantált azonos megjelenés minden felületen
+	\item tipográfiai \tbs \ megjelenítési harmóniára való törekedés
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Témák}
+\begin{itemize}
+\item A \textbf{\tbs usetheme\{témaneve\}} módon választhatunk témát
+\item Az alapból definiált témák városok neveiről vannak elnevezve
+\item A témákhoz általában tartoznak színvariánsok is
+\item Ezek pedig többségében állatokról vannak elnevezve
+\item Ezt pedig a \textbf{\tbs usethemecolor\{színvariáns neve\}} módon használhatjuk
+\item Ezeket lásd pl. \url{https://hartwork.org/beamer-theme-matrix/}
+\item De, természetesen, ha nem tetszenek, vagy sajátot szeretnénk, ezeket is újra lehet definiálni, vagy egy teljesen újat készíteni.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{A preambulum fontosabb részei}
+\begin{itemize}
+\item \tbs title\{A prezentáció címe\}
+\item \tbs author\{Vezetéknév Keresztnév\}
+\item \tbs institute\{Példa Statisztikai Intézmény\}
+\item \tbs date\{ÉÉÉÉ.HH.NN.\}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{A diák készítése}
+\begin{itemize}
+\item A diák a \textbf{frame} környezetben vannak definiálva
+	\begin{itemize}
+	\item \tbs begin\{frame\}
+	\item A dia tartalma
+	\item \tbs end\{frame\}
+	\end{itemize}
+\item A dia címét vagy a \textbf{\tbs frametitle\{A dia címe\}} paranccsal adhatjuk meg
+\item vagy a \tbs begin\{frame\}\textbf{\{Dia címe\}}  módon
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Az első dia}
+\begin{itemize}
+\item Az ajánlott első dia a címdia
+\item Ezt automatikusan hozzáadja a varázsló
+\item Ezen jelennek meg a preambulumban deklarált értékek
+\end{itemize}
+
+\vspace{1cm}
+
+\verb|\begin{frame}| \\
+\verb|\titlepage| \\
+\verb|\end{frame}|
+\end{frame}
+
+\begin{frame}{Strukturalizáció - opcionális}
+\begin{itemize}
+\item A prezentációt lehetőségünk van strukturalizálni
+\item A nagy részeket a \textbf{\tbs part\{Rész neve\}} választja el - általában nem jelenik meg sehol
+	\begin{itemize}
+	\item általában nem jelenik meg a címe
+	\item célja a részek számozásának elválasztása
+	\end{itemize}
+\item A részeken belüli szekciókat / fejezeteket a \textbf{\tbs section\{Fejezet címe\}} módon adhatjuk meg
+	\begin{itemize}
+	\item Ezek neve a téma beállításától függő helyen - általában a fejlécben - megjelenik
+	\item Valamint listázásra kerül a diák mennyisége is, hivatkozott formában
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Érdekesség}
+\begin{itemize}
+\item Amennyiben egy felsorolást szeretnénk készíteni, aminek az elemei egyesével jelennek meg, úgy azt az alábbi módon tehetjük meg:
+\end{itemize}
+
+\begin{verbatim}
+\begin{itemize}
+ \item<1-> Első diától jelenik meg
+ \item<2-> Második diától jelenik meg
+ \item<3-> Harmadik diától jelenik meg
+ \item<4-> Negyedik diától jelenik meg
+\end{itemize}
+\end{verbatim}
+
+\begin{itemize}
+\item Ha azt szeretnénk, hogy valamelyik csak az adott dián - se előtte, se utána - jelenjen meg
+\item akkor ott hagyjuk el a ,,-''-et a szám után, pl. ,,<3>''
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{A gyakorlatban}
+\begin{itemize}
+ \item<1-> Első diától jelenik meg
+ \item<2-> Második diától jelenik meg
+ \item<3-> Harmadik diától jelenik meg
+ \item<4-> Negyedik diától jelenik meg
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{A gyakorlatban a kihagyásos}
+\begin{itemize}
+ \item<1-> Első diától jelenik meg
+ \item<2-> Második diától jelenik meg
+ \item<3> \textbf{Csak} a harmadik dián jelenik meg
+ \item<4-> Negyedik diától jelenik meg
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Másik lehetőség}
+\begin{itemize}
+\item Amikor nem felsorolással dolgozunk, akkor használhatjuk a \textbf{\tbs pause} parancsot is
+\end{itemize}
+
+\begin{verbatim}
+\begin{frame}
+
+Első dia szövege \\ \pause % Ha, nem adunk sortörést, 
+							akkor egy sorba írja
+Második dia szövege \\ \pause
+Harmadik dia szövege
+\end{verbatim}
+\verb|\end{frame}|
+\end{frame}
+
+\begin{frame}
+\frametitle{Gyakorlatban a pause}
+Első dia szövege \\ \pause
+Második dia szövege \\ \pause
+Harmadik dia szövege
+\end{frame}
+
+\end{document}

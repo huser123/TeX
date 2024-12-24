@@ -1,0 +1,34 @@
+\begin{itemize}
+\item \textsc{\textbf{Figyelmesen olvassa el a feladat leírását!}}
+\item Készítse el a második oldalon található ábrát
+\item A segédvonalak alapján törekedjen a pontos méretazonosságra és a méretarányok megtartására
+	\begin{itemize}
+	\item Egy négyzet egy egységnek felel meg
+	\end{itemize}
+\item Figyeljenek a vonal vastagságára, színére  és mintázatára, valamint a kitöltés színére is!
+	\begin{itemize}
+	\item Ezek meghatározása a minta alapján történik!
+	\end{itemize}
+\item Az ábrán kívül szerkessze meg a neve mellett található két karaktert is
+	\begin{itemize}
+	\item A karaktereket nagy nyomtatott változatban kérjük megszerkeszteni
+	\item A karakterek nem egy vonalból állnak, szárai minimum egy egység szélesek
+	\item A harmadik oldalon talál egy minta ,,B'' betűt
+	\end{itemize}
+\item Az ábra és mindkét karakter is \textbf{külön-külön} \textit{tikzpicture} környezetben készüljön
+	\begin{itemize}
+	\item tehát a végén három környezet legyen
+	\end{itemize}
+\item A kész ábrák \textbf{forrásfájlját} töltse fel a e-learning rendszerbe!
+	\begin{itemize}
+	\item A leadás formátuma: \textbf{Vezeteknev\_Keresztnev.tex} ékezet és szóköz nélkül!
+	\item Mást ne töltsön fel ezen kívül!
+	\end{itemize}
+\end{itemize}
+
+\vspace{2cm}
+
+\begin{itemize}
+\item A GeoGebrából kiexportált ábrákat \textbf{nem} fogadunk el!
+\item Csak a saját kezűleg szerkesztett ábrákat fogadjuk el!
+\end{itemize}

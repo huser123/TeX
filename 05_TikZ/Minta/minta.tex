@@ -1,0 +1,82 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[magyar]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\author{Vezetéknév Keresztnév}
+
+\newcommand{\koor}{\coordinate}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+\foreach \x in {1,1.5,...,9}
+       \draw[color=blue] (0,1*\x) circle (\x);
+
+\end{tikzpicture}
+
+\begin{tikzpicture}
+
+
+\foreach \x in {1,...,10}
+	\foreach \y in {1,...,10}
+       \draw[red, fill=blue, thick] (\x,\y) rectangle (\x+0.5,\y+0.3);
+\end{tikzpicture}
+
+\begin{tikzpicture}[scale=2]
+
+
+
+%\foreach \x in {1,1.5,...,9}
+%       \draw[color=blue] (0,1*\x) circle (\x);
+       
+%\foreach \x in {1,...,10}
+%	\foreach \y in {1,...,10}
+%       \draw (\x,\y)--(\x,\y);
+
+%\foreach \x in {1,...,10}
+%	\foreach \y in {1,...,10}
+%       \draw[red, fill=blue, thick] (\x,\y) rectangle (\x+0.5,\y+0.3);
+
+\koor (A) at (10,0);
+\koor (B) at (10,5);
+\koor (C) at (12,5);
+\koor (D) at (8.5,9);
+\koor (E) at (5,5);
+\koor (F) at (7,5);
+\koor (G) at (7,0);
+
+\draw [dotted, blue, fill=green!20] (A)--(B)--(C)--(D)--(E)--(F)--(G)--(A);
+\node [below] at (A) {A};
+\node [left] at (B) {B};
+\node [below] at (C) {C};
+\node [above] at (D) {D};
+\node [below] at (E) {E};
+\node [right] at (F) {F};
+\node [below] at (G) {G};
+
+\end{tikzpicture}
+
+
+\begin{tikzpicture}
+% \path (x,y) coordinate() [] node {};
+\path (10,0) coordinate(A) [below] node {A};
+\path (10,15) coordinate(B) [above] node {B};
+\path (10,2) coordinate(C) [above] node {C};
+\path (10,13) coordinate(D) [below] node {D};
+
+\draw (B) arc (90:270:7.5);
+\draw (D) arc (90:270:5.5);
+\draw (A)--(C);
+\draw (D)--(B);
+
+
+\end{tikzpicture}
+
+\end{document}
